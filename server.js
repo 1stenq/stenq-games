@@ -12,6 +12,20 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+async function fetchDealPage(page) {
+    // Rate limit koruması
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    const url = `${CONFIG.CHEAPSHARK_API}/deals?pageNumber=${page}&pageSize=${CONFIG.DEAL_PAGE_SIZE}&onSale=1&sortBy=DealRating&desc=1`;
+    try {
+        const data = await fetchJSON(url);
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        console.warn('CheapShark sayfa ' + page + ' alinamadi: ' + error.message);
+        return [];
+    }
+}
+
 const CONFIG = {
     PORT,
 
@@ -29,7 +43,7 @@ const CONFIG = {
     // fiyata yakınlığı, "Savings" ise ham indirim yüzdesini
     // baz alır. İkisi birlikte, AAA oyunların sadece
     // DealRating'i düşük diye havuz dışında kalmasını önler.
-    DEAL_PAGES: 20,
+    DEAL_PAGES: 5,
     DEAL_PAGE_SIZE: 60,
     DEAL_SORT_STRATEGIES: ['Deal Rating', 'Savings'],
 
