@@ -13,17 +13,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 async function fetchDealPage(page) {
-    // Rate limit koruması
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    // Rate limit koruması - HER İSTEKTE 1 SANİYE BEKLE
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
     const url = `${CONFIG.CHEAPSHARK_API}/deals?pageNumber=${page}&pageSize=${CONFIG.DEAL_PAGE_SIZE}&onSale=1&sortBy=DealRating&desc=1`;
-    try {
-        const data = await fetchJSON(url);
-        return Array.isArray(data) ? data : [];
-    } catch (error) {
-        console.warn('CheapShark sayfa ' + page + ' alinamadi: ' + error.message);
-        return [];
-    }
+    // ... geri kalanı aynı
 }
 
 const CONFIG = {
