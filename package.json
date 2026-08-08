@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "name": "stenq-games",
+  "version": "2.0.0",
+  "description": "STENQ GAMES - Oyun Fırsatları ve İndirim Platformu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  }
+}

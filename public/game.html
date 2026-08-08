@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <title>Oyun Detayı - STENQ GAMES</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="/img/logo.png">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="/" class="logo-link" aria-label="STENQ GAMES Ana Sayfa">
+                <img src="/img/logo.png" alt="STENQ GAMES" class="logo" onerror="this.parentElement.innerHTML='<span class=logo-text>STENQ GAMES</span>'">
+            </a>
+            
+            <nav class="detail-nav">
+                <button class="btn btn-back" onclick="window.location.href='/'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                    Ana Sayfa
+                </button>
+                <button class="btn btn-back" onclick="history.back()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m12 19-7-7 7-7"></path>
+                    </svg>
+                    Geri Dön
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div id="loadingContainer" class="loading-container">
+        <div class="detail-loading-skeleton">
+            <div class="skeleton-hero"></div>
+            <div class="skeleton-info"></div>
+            <div class="skeleton-grid"></div>
+        </div>
+        <p class="loading-text">🎮 Oyun detayları yükleniyor...</p>
+    </div>
+
+    <div id="errorContainer" class="error-container" style="display:none">
+        <div class="error-icon">⚠️</div>
+        <h3>Oyun Detayı Yüklenemedi</h3>
+        <p>Bu oyunun detayları şu anda görüntülenemiyor.</p>
+        <button onclick="window.location.href='/'" class="btn btn-primary">Ana Sayfaya Dön</button>
+    </div>
+
+    <div id="gameDetail" class="game-detail" style="display:none"></div>
+
+    <div id="screenshotModal" class="modal screenshot-modal" style="display:none">
+        <button class="modal-close" aria-label="Kapat">✕</button>
+        <button class="modal-prev" aria-label="Önceki">‹</button>
+        <img src="" alt="Screenshot" class="modal-image">
+        <button class="modal-next" aria-label="Sonraki">›</button>
+        <div class="modal-counter"></div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> STENQ GAMES. Tüm hakları saklıdır.</p>
+    </div>
+</footer>
+
+    <script src="/js/game.js"></script>
+</body>
+</html>
